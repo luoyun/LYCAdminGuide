@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "LuoYunCloud_UserGuide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-domain">
+  <title>域名配置</title>
+
+  <section>
+    <title>前提条件</title>
+
+    <procedure>
+      <step>
+	<title>拥有自己的域名解析权</title>
+	<para>以 example.com 为例，请将所有二级域名　（如： a.example.com, b.example.com, ...）　的 A记录解析地址都指向 lyweb 所在的服务器 IP 。</para>
+      </step>
+      <step>
+	<title>拥有 LuoYunCloud 系统的管理员操作权限</title>
+	<para>这是废话。 :-)</para>
+      </step>
+    </procedure>
+
+  </section>
+
+
+  <section>
+    <title>LuoYunCloud 域名配置</title>
+
+    <para>进入管理后台，打开域名配置页，如下：</para>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/configure-domain.png" format="PNG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+
+  </section>
+
+</chapter>
+
