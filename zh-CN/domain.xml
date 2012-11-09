@@ -32,6 +32,13 @@
 	<imagedata fileref="images/configure-domain.png" format="PNG"  align="center"/>
       </imageobject>
     </mediaobject>
+    <para>进入应用库创建所需虚拟机，查看此虚拟机的域名：</para>
+        <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/look-domain.png" format="PNG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>此虚拟机的域名构成：名称前缀 'i'-虚拟机 'id'-名称后缀 'm'-一级域名 'example.com'</para>
 
   </section>
 
