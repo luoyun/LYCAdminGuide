@@ -26,19 +26,22 @@
   <section>
     <title>LuoYunCloud 域名配置</title>
 
-    <para>进入管理后台，打开域名配置页，如下：</para>
+    <para>点击用户名>>管理后台>>系统>>域名，出现域名配置页，如下图：</para>
     <mediaobject>
       <imageobject>
 	<imagedata fileref="images/configure-domain.png" format="PNG"  align="center"/>
       </imageobject>
     </mediaobject>
-    <para>进入应用库创建所需虚拟机，查看此虚拟机的域名：</para>
+    <para>进入我的落云>>虚拟机，查看此虚拟机的域名：</para>
         <mediaobject>
       <imageobject>
 	<imagedata fileref="images/look-domain.png" format="PNG"  align="center"/>
       </imageobject>
     </mediaobject>
-    <para>此虚拟机的域名构成：名称前缀 'i'-虚拟机 'id'-名称后缀 'm'-一级域名 'example.com'</para>
+    <important>
+  <title>此虚拟机的域名构成</title>
+  <para>名称前缀 'i'-虚拟机 'id'-名称后缀 'm'-一级域名 'example.com'</para>
+</important>
 
   </section>
 
