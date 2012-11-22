@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "LuoYunCloud_UserGuide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-mail_server">
+  <title>配置邮件服务</title>
+
+  <procedure>
+    <title>配置 LuoYunCloud 的发信服务</title>
+    <step>
+      <title>安装配置 Postfix</title>
+      <para>
+	默认安装好的 Postfix 就可以发送邮件了,在 web 服务所在的节点上,安装并启动 Postfix:
+	<screen>
+# yum install postfix
+# service postfix status
+	</screen>
+      </para>
+    </step>
+    <step>
+      <title>配置 LuoYunCloud web</title>
+      <para>配置 <command>/opt/LuoYun/web/luoyun.cfg</command> 文件中 email 信息:</para>
+      <screen>
+[email]
+
+name = LuoYunCloud Admin
+from = noreply@luoyuncloud.com
+
+smtp_server = localhost
+smtp_port = 25
+      </screen>
+    </step>
+  </procedure>
+</chapter>
+

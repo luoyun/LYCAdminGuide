@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "LuoYunCloud_UserGuide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-get_files">
+  <title>获取 0.5 安装文件</title>
+
+  <itemizedlist>
+
+    <listitem>
+      <para>源码包下载　<ulink url="http://dl.luoyun.co/LuoYunCloud/0.5/SRC/luoyuncloud-0.5.tar.bz2">luoyuncloud-0.5.tar.bz2</ulink></para>
+    </listitem>
+
+    <listitem>
+      <para>SRPM 下载　<ulink url="http://dl.luoyun.co/LuoYunCloud/0.5/SRPMS/luoyuncloud-0.5-1.el6.src.rpm">luoyuncloud-0.5-1.el6.src.rpm</ulink></para>
+    </listitem>
+
+    <listitem>
+      <para>二进制包 (RPMS)下载　<ulink url="http://dl.luoyun.co/LuoYunCloud/0.5/RPMS/el6/x86_64/">luoyuncloud 0.5 RPMS</ulink></para>
+    </listitem>
+
+  </itemizedlist>
+
+</chapter>
+

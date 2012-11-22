@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "LuoYunCloud_UserGuide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-install">
+  <title>安装 LuoYunCloud</title>
+
+  <section>
+    <title>使用 LiveCD 安装</title>
+    <para>未完待续...</para>
+  </section>
+
+
+  <section>
+    <title>使用 yum 源安装</title>
+    <para>下载 <ulink url="http://dl.luoyun.co/LuoYunCloud/0.5/RPMS/el6/x86_64/luoyuncloud.repo">http://dl.luoyun.co/LuoYunCloud/0.5/RPMS/el6/x86_64/luoyuncloud.repo</ulink> 保存为 <command>/etc/yum.repos.d/luoyuncloud.repo</command>, 以 <command>root</command> 权限运行命令安装 LuoYunCloud:</para>
+    <screen>
+# yum update
+# yum install luoyuncloud*
+    </screen>
+    <para>未完待续...</para>
+  </section>
+
+  <section>
+    <title>从源代码安装</title>
+    <para>未完待续...</para>
+  </section>
+
+</chapter>
+

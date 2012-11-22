@@ -5,10 +5,10 @@
 	<title>我们需要您的反馈意见！</title>
 	 <indexterm>
 		<primary>反馈</primary>
-		 <secondary>落云科技：contact@luoyun.co</secondary>
+		 <secondary>落云科技：<ulink url="mailto:contact@luoyun.co">contact@luoyun.co</ulink></secondary>
 	</indexterm>
 	 <para>
-             请联系我们：contact@luoyun.co
+             请联系我们：<ulink url="mailto:contact@luoyun.co">contact@luoyun.co</ulink>
 	</para>
 </section>
 
