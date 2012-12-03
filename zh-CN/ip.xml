@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "LuoYunCloud_UserGuide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap_ip_pool">
+  <title> LuoYunCloud 系统的IP池配置说明</title>
+  <section>
+    <title>从 0.4 升级到 0.5 注意事项</title>
+    <warning>
+      <title>请备份你的数据库!</title>
+      <para>
+	0.5 的升级涉及到数据库的更新,　请先使用 <command>postgres</command> 用户备份当前数据库.
+	<screen>
+# su - postgres
+$ pg_dump luoyun > luoyun-backup-20121121.sql
+$ pwd
+/var/lib/pgsql
+	</screen>
+	我们示例是将数据库备份为 <command>/var/lib/pgsql/luoyun-backup-20121121.sql</command> 文件.请保管好这个文件,今后如果有需要可以用这个文件恢复数据库:
+	<screen>
+# su - postgres
+$ dropdb luoyun
+$ createdb luoyun -O luoyun
+$ psql -d luoyun -U luoyun -f luoyun-backup-20121121.sql
+	</screen>
+      </para>
+    </warning>
+
+    <note>
+      <para>请同时保存好这些数据,以防止升级中操作错误,影响生产环境:</para>
+      <itemizedlist>
+	<listitem>
+	  <para>Appliance 数据,默认存在 <command>/opt/LuoYun/data/</command></para>
+	</listitem>
+	<listitem>
+	  <para>旧的 lyclc, lynode 配置文件,默认存在 <command>/opt/LuoYun/platform/etc/luoyun-cloud/</command></para>
+	</listitem>
+	<listitem>
+	  <para>旧的 web 目录,默认存在 <command>/opt/LuoYun/web/</command>.这里有 user 等静态文件.</para>
+	</listitem>
+	<listitem>
+	  <para>nginx 配置文件,　默认在 <command>/etc/nginx/</command></para>
+	</listitem>
+      </itemizedlist>
+    </note>
+  </section>
+
+  <section>
+    <title>升级数据库</title>
+    <para>安装好 0.5 的 web 程序</para>
+    <procedure>
+      <title>SQLAlchemy 使用 alembic 自动升级数据表</title>
+      <step>
+	<title>生成自动更新数据</title>
+	<para>下载 <ulink url="http://dl.luoyun.co/LuoYunCloud/0.5/alembic">http://dl.luoyun.co/LuoYunCloud/0.5/alembic</ulink> 保存到 <command>/opt/LuoYun/web/tool/</command> 目录.进入 <command>/opt/LuoYun/web/</command> 目录,执行:
+<screen>python ./tool/alembic revision --autogenerate -m 'Update 0.4 to 0.5'</screen>
+在 <command>./alembic/versions</command> 目录下会产生一个类似 <command>49b413bf73c9_update_0_4_to_0_5.py</command>的文件.</para>
+      </step>
+      <step>
+	<title>生成 offline SQL 文件</title>
+	<para>上面命令生成的文件名中有 "49b413bf73c9",此处我们可以运行下面命令产生一个 SQL 文件.
+<screen>python ./tool/alembic upgrade 49b413bf73c9 --sql > ./4to5.sql</screen></para>
+      </step>
+      <step>
+	<title>更新数据库</title>
+	<para>上面命令生成的<command>4to5.sql</command>文件,您可以查看其中内容.现在运行下面命令更新数据库:
+	<screen>
+# su - postgres
+$ psql -d luoyun -U luoyun -f /opt/LuoYun/web/4to5.sql
+	</screen></para>
+      </step>
+    </procedure>
+  </section>
+
+</chapter>
+
