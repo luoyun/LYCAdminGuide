@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "LuoYunCloud_UserGuide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-OsManager">
+  <title>OsManager</title>
+  <section>
+    <title>OsManager 安装</title>
+    <section>
+      <title>Windows 下安装</title>
+      <section>
+	<title>Windows XP 下安装</title>
+	<note>
+	  <title>前提条件</title>
+	  <para>首先在 windows xp 虚拟机上安装 python version 2.7</para>
+	  <para><ulink url="http://python.org">下载 python</ulink></para>
+	</note>
+	<para>下载 <ulink url="http://dl.luoyun.co/LuoYunCloud/0.5/soft/win-osmanager.zip">win-osmanager.zip</ulink> , 解压到 C 盘,如下图：</para>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="images/xp1.png" format="PNG"  align="center"/>
+	  </imageobject>
+	</mediaobject>
+	<orderedlist>
+	  <listitem>
+	    <para>将 win-osmanager 中的 lyosm.py 文件加载到系统启动项中，步骤：</para>
+	    <para>打开 我的电脑->控制版面->性能维护->任务计划(如下图)-></para>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="images/xp2.png" format="PNG"  align="center"/>
+	      </imageobject>
+	    </mediaobject>
+	    <para>点击 添加任务计划，选择 win-osmanager文件夹中的 \LuoYun\bin\pyosm\lyosm.py 文件->选择 计算机启动时-></para>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="images/xp3.png" format="PNG"  align="center"/>
+	      </imageobject>
+	    </mediaobject>
+	    <para>输入计算机密码-></para>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="images/xp4.png" format="PNG"  align="center"/>
+	      </imageobject>
+	    </mediaobject>
+	    <para>完成</para>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="images/xp5.png" format="PNG"  align="center"/>
+	      </imageobject>
+	    </mediaobject>
+	  </listitem>
+	  <listitem>
+	    <para>打开 我的电脑->控制面板->安全中心，点击 Windows 防火墙 ，将防火墙设置为禁用状态，如下图：</para>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="images/xp6.png" format="PNG"  align="center"/>
+	      </imageobject>
+	    </mediaobject>
+	  </listitem>
+
+	</orderedlist>
+
+      </section>
+    </section>
+  </section>
+
+  
+</chapter>
+
+
