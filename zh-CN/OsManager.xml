@@ -13,7 +13,7 @@
 	<title>Windows XP 下安装</title>
 	<note>
 	  <title>前提条件</title>
-	  <para>首先在 windows xp 虚拟机上安装 python version 2.7</para>
+	  <para>首先在 windows XP 虚拟机上安装 python version 2.7</para>
 	  <para><ulink url="http://python.org">下载 python</ulink></para>
 	</note>
 	<para>下载 <ulink url="http://dl.luoyun.co/LuoYunCloud/0.5/soft/win-osmanager.zip">win-osmanager.zip</ulink> , 解压到 C 盘,如下图：</para>
@@ -25,13 +25,13 @@
 	<orderedlist>
 	  <listitem>
 	    <para>将 win-osmanager 中的 lyosm.py 文件加载到系统启动项中，步骤：</para>
-	    <para>打开 我的电脑->控制版面->性能维护->任务计划(如下图)-></para>
+	    <para>打开我的电脑->控制版面->性能维护->任务计划(如下图)-></para>
 	    <mediaobject>
 	      <imageobject>
 		<imagedata fileref="images/xp2.png" format="PNG"  align="center"/>
 	      </imageobject>
 	    </mediaobject>
-	    <para>点击 添加任务计划，选择 win-osmanager文件夹中的 \LuoYun\bin\pyosm\lyosm.py 文件->选择 计算机启动时-></para>
+	    <para>点击<command>添加任务计划</command>，选择 win-osmanager文件夹中的 \LuoYun\bin\pyosm\lyosm.py 文件->选择<command>计算机启动时</command>-></para>
 	    <mediaobject>
 	      <imageobject>
 		<imagedata fileref="images/xp3.png" format="PNG"  align="center"/>
@@ -51,7 +51,7 @@
 	    </mediaobject>
 	  </listitem>
 	  <listitem>
-	    <para>打开 我的电脑->控制面板->安全中心，点击 Windows 防火墙 ，将防火墙设置为禁用状态，如下图：</para>
+	    <para>打开我的电脑->控制面板->安全中心，点击 Windows 防火墙 ，将防火墙设置为禁用状态，如下图：</para>
 	    <mediaobject>
 	      <imageobject>
 		<imagedata fileref="images/xp6.png" format="PNG"  align="center"/>
@@ -60,6 +60,10 @@
 	  </listitem>
 
 	</orderedlist>
+
+	<note>
+	  <para>现在 Windows XP 应用的 OsManager 服务已经配置完成，您可以继续完成 LuoYunCloud 应用制作的其他步骤（比如,用gzip的压缩镜像）</para>
+	</note>
 
       </section>
     </section>
