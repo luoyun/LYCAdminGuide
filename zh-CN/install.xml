@@ -14,12 +14,97 @@
 
   <section>
     <title>使用 yum 源安装</title>
-    <para>下载 <ulink url="http://dl.luoyun.co/LuoYunCloud/0.5/RPMS/el6/x86_64/luoyuncloud.repo">http://dl.luoyun.co/LuoYunCloud/0.5/RPMS/el6/x86_64/luoyuncloud.repo</ulink> 保存为 <command>/etc/yum.repos.d/luoyuncloud.repo</command>, 以 <command>root</command> 权限运行命令安装 LuoYunCloud:</para>
-    <screen>
-# yum update
-# yum install luoyuncloud*
-    </screen>
-    <para>未完待续...</para>
+    <note>
+      <title>环境要求</title>
+      <para>本安装步骤适用于 <command>RHEL/CentOS 6.x</command> 64 位操作系统</para>
+    </note>
+    <para>为了方便大家更好的体验和部署 LuoYunCould 云计算系统，我们提供了 yum install 安装方式供大家使用。您只需要掌握 yum install 即可在您的计算机中快速的部署 LuoYunCloud 了。</para>
+    <important><para>以下所有操作请使用 root 权限的帐户进行。</para></important>
+    <procedure>
+      <step>
+      <title>将 LuoYunCloud 加入您的软件源中</title>
+      <programlisting>
+wget http://dl.luoyun.co/LuoYunCloud/0.5/RPMS/el6/x86_64/luoyuncloud.repo
+mv luoyuncloud.repo /etc/yum.repos.d/luoyuncloud.repo
+      </programlisting>
+    </step>
+    <step>
+      <title>部署 LuoYunCloud 的主控服务器软件</title>
+      <programlisting>
+yum install luoyuncloud-web luoyuncloud-clc
+      </programlisting>
+      <para>执行此条指令可以在您的机器上部署 lyweb 和 lyclc 这两项 LuoYunCloud 服务。</para>
+      <para>执行完成后，这两项服务已经默认部署在 /opt/LuoYun 中，接下来您需要执行一次 lyweb 的安装。</para>
+    </step>
+    <step>
+      <title>安装 lyweb 服务及 postgresql 数据库</title>
+      <para>执行：</para>
+      <programlisting>
+/opt/LuoYun/bin/install-web.sh
+      </programlisting>
+      <para>此指令将帮助您快速的完成 lyweb 服务及数据库的初始化安装。在执行过程中您需要输入数据库名称，建议使用 luoyun，输入2次后，将请求给以 luoyun 数据库高级权限，请输入 y 确认。</para>
+      <para>得到如下反馈后,表示您的机器中已经安装 lyweb 及其所需要的数据库：</para>
+      <programlisting>
+[root@localhost ~]# /opt/LuoYun/bin/install-web.sh
+Initializing database:                                     [  OK  ]   # 注意，此处可能需要时间较长，请耐心等待即可。
+Starting postgresql service:                               [  OK  ]
+Create DB User
+Enter password for new role:                                          # 此处请输入luoyun
+Enter it again:                                                       # 再输入一次luoyun进行确认
+Shall the new role be a superuser? (y/n)                              # 输入y，确认数据库权限
+  => [DD] create user luoyun succeed
+Create DB luoyun
+  => [DD] create luoyun succeed
+Stopping postgresql service:                               [  OK  ]
+Starting postgresql service:                               [  OK  ]
+DEBUG:Manage:build /opt/LuoYun/web/locale/zh_CN/LC_MESSAGES/luoyun.mo success
+DEBUG:Manage:build /opt/LuoYun/web/locale/zh_CN/LC_MESSAGES/app.mo success
+DEBUG:Manage:build /opt/LuoYun/web/locale/en_US/LC_MESSAGES/luoyun.mo success
+DEBUG:Manage:build /opt/LuoYun/web/locale/en_US/LC_MESSAGES/app.mo success
+[root@localhost ~]#
+      </programlisting>
+      <para>至此，上述提示信息即表示您已经成功完成 lyweb 的安装。</para>
+      <important>
+      <para>如果安装过程中出现错误提示，请执行下面的两条指令对数据库进行重置</para>
+      <programlisting>
+# service postgresql stop
+
+# rm -rf /var/lib/pgsql/*
+      </programlisting>
+      <para>然后重新执行</para>
+      <programlisting>
+/opt/LuoYun/bin/install-web.sh
+      </programlisting>
+      </important>
+    </step>
+    <step>
+      <title>启动 lyweb 服务</title>
+      <programlisting>
+service lyweb start
+      </programlisting>
+    </step>
+    <step>
+      <title>启动 lyclc 服务</title>
+      <programlisting>
+service lyclc start
+      </programlisting>
+    </step>
+    <step>
+      <title>部署 LuoYunCloud 的节点服务器软件</title>
+      <programlisting>
+yum install luoyuncloud-node
+      </programlisting>
+    </step>
+    <step>
+      <title>启动 lynode 节点服务</title>
+      <programlisting>
+service lynode start
+      </programlisting>
+    </step>
+    
+
+    </procedure>
+
   </section>
 
   <section>
