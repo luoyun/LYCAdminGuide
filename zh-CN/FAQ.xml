@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "LuoYunCloud_UserGuide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-FAQ">
+  <title>FAQ - 用户经常问道的问题</title>
+  <para>
+    LuoYunCloud 发布以来，收到很多用户的问题以及建议，我们非常感谢！为了减省用户的时间，我们将一些常问问题整理后，放在这里，欢迎大家查阅！
+  </para>
+  <section id="sect-FAQ-Section_1">
+    <title>Live CD 可以不安装直接运行吗？</title>
+    <para>
+
+      <note><para>理论上是可以的，但为了用户能全面体验 LuoYunCloud 平台，我们目前不支持这样做！</para></note>
+
+      因为我们的 LiveCD 自带了一个 ownCloud 演示应用，默认需要 3Ｇ 磁盘空间，加上 LiveCD 自己的 1Ｇ 多磁盘空间。而为了能适应更多不同规格的机器，LiveCD 磁盘默认用的 4G 大小（这也是 RHEL/CentOS/Fedora 等 LiveCD 的默认做法）。因此，在 LiveCD 中不能演示 ownCloud 应用，也就不能体会 LuoYunCloud 的全部功能。
+    </para>
+  </section>
+  
+  <section id="sect-FAQ-Section_2">
+    <title>为什么创建虚拟机只能配置 256M 内存，1CPU ？</title>
+    <para>
+      <note><para>LuoYunCloud 的虚拟机资源没有任何限制！</para></note>
+      默认 LuoYunCloud 系统里，每个用户缺省资源配置如下，在配置文件 /opt/LuoYun/web/settings.py 中：
+      <programlisting>
+USER_DEFAULT_MEMORY = 256    # 256M 内存
+USER_DEFAULT_CPUS = 1        # 1 CPU
+USER_DEFAULT_INSTANCES = 10  # 10 虚拟机创建许可
+USER_DEFAULT_STORAGE = 2     # 2 G 附加存储
+      </programlisting>
+      
+      您可以修改这个配置，重启 LuoYunCloud 即可。我们下个版本会将这个配置编辑放到管理界面。
+
+      <note><para>对于已经存在的用户，请通过 Web 管理界面，点击"用户”管理，找到指定用户，编辑资源配置即可。</para></note>
+    </para>
+  </section>
+
+
+  <section id="sect-FAQ-Section_3">
+    <title>管理界面配置用户资源时有限制怎么办？</title>
+    <para>
+      <note><para>这个限制是为了保护系统。默认限制：内存小于 10240M、CPU 小于 20个、虚拟机小于 100个、附加存储小于 100G。</para></note>
+
+      目前版本写在程序内部，下一版本会在管理界面配置。如有需求，请修改 /opt/LuoYun/web/app/admin/forms.py 里下面的配置数字即可：
+
+      <programlisting>
+class UserResourceForm(Form):
+    memory = IntegerField( _('Memory(M)'), [validators.NumberRange(min=256, max=10240)])
+    cpus = IntegerField( _('CPUs'), [validators.NumberRange(min=1, max=20)])
+    instances = IntegerField( _('Instances'), [validators.NumberRange(min=1, max=100)])
+    storage = IntegerField( _('Storage(G)'), [validators.NumberRange(min=2, max=100)])
+      </programlisting>
+    </para>
+  </section>
+
+  <section id="sect-FAQ-Section_4">
+    <title>我的系统能跑多少个虚拟机？</title>
+    <para>
+      <note><para>可以跑很多！</para></note>
+
+      目前 LuoYunCloud 基于 KVM 虚拟化，运行的虚拟机个数取决于您的物理机资源。另外，我们控制节点的配置文件中有个全局因子，控制云平台运行虚拟化级别：
+
+      <programlisting>
+云平台可以运行的虚拟机总数 = 全局因子 x 所有计算节点的CPU总核数
+      </programlisting>
+
+      以 www.LuoYunCloud.com 演示平台为例，我们一共有 3 台服务器，配置如下：
+      <orderedlist>
+	<listitem><para>16G 内存</para></listitem>
+	<listitem><para>1颗 4 核 CPU ( Intel(R) Xeon(R) CPU E5606 @ 2.13GH )</para></listitem>
+	<listitem><para>1T 硬盘</para></listitem>
+      </orderedlist>
+
+      目前跑了 123 个虚拟机，使用 32 Ｇ内存。
+      <mediaobject>
+	<imageobject><imagedata fileref="images/FAQ/luoyuncloud-admin.png" format="PNG" /></imageobject>
+	<textobject><phrase>alternate text goes here</phrase></textobject>
+      </mediaobject>
+    </para>
+  </section>
+
+</chapter>
+
