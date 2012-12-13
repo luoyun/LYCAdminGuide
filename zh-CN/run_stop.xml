@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "LuoYunCloud_UserGuide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-run_stop">
+  <title>运行 / 停止 LuoYunCloud</title>
+
+  <section>
+    <title>运行 LuoYunCloud</title>
+    <para>单机情况下 LuoYunCloud 的运行步骤如下，如果 lyweb, lyclc, lynode 部署在不同机器上，请在相应机器上执行对应的启动命令即可：</para>
+    <procedure>
+      <step>
+	<title>启动 postgresql</title>
+	<para>对于<command>lyweb</command>、<command>lyclc</command> 这是最先需要启动的服务<command>postgresql</command></para>
+	<screen>service postgresql start</screen>
+      </step>
+
+      <step>
+	<title>启动 lyweb</title>
+	<para><command>postgresql</command> 必须己经启动。</para>
+	<screen>service lyweb start</screen>
+      </step>
+
+      <step>
+	<title>启动 lyclc</title>
+	<para><command>postgresql</command> 必须己经启动。</para>
+	<screen>service lyclc start</screen>
+      </step>
+
+      <step>
+	<title>启动 lynode</title>
+	<para><command>libvirtd</command>、<command>lyclc</command> 必须己经启动。</para>
+	<screen>service lynode start</screen>
+      </step>
+    </procedure>
+  </section>
+
+  <section>
+    <title>停止 LuoYunCloud</title>
+    <note>
+      <para>如果要完全停止整个 LuoYunCloud ，请先在 LuoYunCloud Web 管理后台停止所有虚拟机器。如果仅要重启 LuoYunCloud 的部分模块，只需操作对应的模块即可，不需停止所有服务。</para>
+    </note>
+  </section>
+
+</chapter>
+

@@ -80,5 +80,32 @@ class UserResourceForm(Form):
     </para>
   </section>
 
+  <section>
+    <title>节点注册不上？</title>
+    <para>节点注册不上， 可以按下面步骤检查:</para>
+    <procedure>
+      <step>
+	<title>检查 <command>iptables</command>（防火墙）</title>
+	<para>首先，确定 <command>lyclc</command> ( <command>LuoYunCloud</command> 控制节点） 所在的  <command>iptables</command>（防火墙）打开了如下端口。确定文件 <command>/etc/sysconfig/iptables</command> 包含以下内容。</para>
+	<screen>
+-A INPUT -p tcp -m tcp --dport 1369 -j ACCEPT
+	</screen>
+
+	<para>以上内容要在下面规则之前：</para>
+	<screen>
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+	</screen>
+      </step>
+
+      <step>
+	<title>检查 LuoYunCloud web 管理后台是否启用节点</title>
+	<para>确保下图中的 <command>可用</command> 是勾选的。</para>
+	<mediaobject>
+	  <imageobject><imagedata fileref="images/FAQ/node-enable.png" format="PNG" /></imageobject>
+	</mediaobject>
+      </step>
+    </procedure>
+  </section>
+
 </chapter>
 
