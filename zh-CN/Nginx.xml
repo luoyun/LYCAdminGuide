@@ -12,7 +12,7 @@
     <para>LuoYunCloud 中应用 Nginx 最常遇到的问题归纳：</para>
 
     <section>
-      <title>Nginx 日志报諎： "Too Many Open Files Error"</title>
+      <title>Nginx 日志报諎： "24: Too many open files"</title>
       <para>LuoYunCloud 通常运行在 GNU/Linux 系统下，nginx 程序所能打开的文件个数由系统限制。运行下面命令可以看到当前用户能打开的文件数限制，假设 nginx 程序由 http 用户启动，那么它的限制就是由 http 用户决定的：</para>
       <screen>
 # su - http
