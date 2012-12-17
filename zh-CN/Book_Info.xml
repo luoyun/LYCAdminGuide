@@ -4,11 +4,11 @@
 %BOOK_ENTITIES;
 ]>
 <bookinfo id="book-LuoYunCloud_User_Guide-LuoYunCloud_User_Guide">
-	<title>LuoYunCloud 管理员手册</title>
-	<subtitle>LuoYunCloud 管理员使用手册</subtitle>
-	<productname>LuoYun Documment</productname>
-	<productnumber>2012</productnumber>
-	<edition>20121121</edition>
+	<title>管理员手册</title>
+	<subtitle>介绍 LuoYunCloud 的安装、部署、 管理等</subtitle>
+	<productname>LuoYunCloud</productname>
+	<productnumber>0.5</productnumber>
+	<edition>20121217</edition>
 	<pubsnumber>0</pubsnumber>
 	<abstract>
 		<para>
