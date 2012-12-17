@@ -44,12 +44,7 @@ http       hard    nofile  30000
 	</step>
       </procedure>
 
-      <para>现在再查看下用户可打开文件数限制：</para>
-      <screen>
-# su - http
-$ ulimit -Hn
-$ ulimit -Sn
-      </screen>
+      <para>现在再查看下用户可打开文件数限制，应该是正确的了。</para>
     </section>
 
   </section>
