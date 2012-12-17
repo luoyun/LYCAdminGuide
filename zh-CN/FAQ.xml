@@ -107,5 +107,20 @@ class UserResourceForm(Form):
     </procedure>
   </section>
 
+  <section>
+    <title>访问不了虚拟机的 Web 页面？</title>
+    <para>可以按下面步骤检查:</para>
+    <procedure>
+      <step>
+	<title>检查 <command>iptables</command>（防火墙）</title>
+	<para>查看需要访问的 web 端口是否开放。比如 80, 8080, 8001 。</para>
+      </step>
+      <step>
+	<title>检查 nginx 的错误日志</title>
+	<para>默认情况下， nginx 错误日志位于 <command>/var/log/nginx/error.log</command> 。关于 <command>nginx</command> 更多的错误处理请看 <xref linkend="chap-nginx" /> 中错误处理。</para>
+      </step>
+    </procedure>
+  </section>
+
 </chapter>
 

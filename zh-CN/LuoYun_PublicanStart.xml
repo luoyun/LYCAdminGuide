@@ -16,6 +16,7 @@
 	<xi:include href="mail_server.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 	<xi:include href="OsManager.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 	<xi:include href="Appliances.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="Nginx.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 	<xi:include href="FAQ.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 	<xi:include href="Revision_History.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 	<index />

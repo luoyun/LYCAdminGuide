@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "LuoYunCloud_UserGuide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-nginx">
+  <title>Nginx 的配置管理</title>
+  <para>Nginx 是一款高效的 web server ， LuoYunCloud 的 web 模块默认使用 Nginx 作 Web Server 前端。本文主要讲解如何在 LuoYunCloud 生成环境中使用 Nginx 。并将使用中可能会遇到的问题作一个简单说明。</para>
+
+  <section>
+    <title>FAQ</title>
+    <para>LuoYunCloud 中应用 Nginx 最常遇到的问题归纳：</para>
+
+    <section>
+      <title>Nginx 日志报諎： "Too Many Open Files Error"</title>
+      <para>LuoYunCloud 通常运行在 GNU/Linux 系统下，nginx 程序所能打开的文件个数由系统限制。运行下面命令可以看到当前用户能打开的文件数限制，假设 nginx 程序由 http 用户启动，那么它的限制就是由 http 用户决定的：</para>
+      <screen>
+# su - http
+$ ulimit -Hn
+$ ulimit -Sn
+      </screen>
+      <para>默认上面输出应该是 1024 （这是标准的 GNU/Linux 系统限制），现在我们修改个这个限制。</para>
+      <procedure>
+	<step>
+	  <title>在文件 /etc/sysctl.conf 中添加</title>
+	  <screen>fs.file-max = 70000</screen>
+	</step>
+	<step>
+	  <title>在文件 /etc/security/limits.conf 中添加</title>
+	  <screen>
+http       soft    nofile   10000
+http       hard    nofile  30000
+          </screen>
+	  <para>这里的 http 是运行 nginx 程序的用户名，如果你的不一样，请对应修改。</para>
+	</step>
+	<step>
+	  <title>使系统设制生效</title>
+	  <screen># sysctl -p</screen>
+	</step>
+	<step>
+	  <title>修改 nginx 配置</title>
+	  <para>编辑 /etc/nginx/conf/nginx.conf 文件，加入  <command>worker_rlimit_nofile 30000;</command> ，重启 nginx 。</para>
+	  <screen>nginx -s reload</screen>
+	</step>
+      </procedure>
+
+      <para>现在再查看下用户可打开文件数限制：</para>
+      <screen>
+# su - http
+$ ulimit -Hn
+$ ulimit -Sn
+      </screen>
+    </section>
+
+  </section>
+
+</chapter>
+
