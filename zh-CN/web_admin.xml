@@ -7,6 +7,146 @@
   <title>Web 管理后台</title>
   <para>LuoYunCloud 的大部分管理操作都集中在 Web 管理后台。</para>
 
+  <!-- 开始进入管理后台-->
+  <section>
+    <title>进入管理后台</title>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/entry_admin.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>当用户 “admin” 或是其它具有管理权限的用户登录 LuoYunCloud 云平台时，Web 页面上会显示“管理后台”链接。所有关于 LuoYun 云平台的管理操作都包含在“管理后台”页面。</para>
+  </section>
+  <!-- 结束进入管理后台-->  
+
+  <!-- 开始上传应用-->
+  <section>
+    <title>上传应用</title>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/upload_appliance.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>完成初始安装的 LuoYunCloud 平台后的应用库为空，请将 LuoYun 应用上传到应用库中并取消"私有"选项.即可正式为用户提供云计算服务。管理员可以在<ulink url="http://www.luoyuncloud.com/">LuoYunCloud 演示平台</ulink>上查找下载现有的落云应用。上传应用的方法可以参照从<ulink url="http://project.luoyun.co/projects/luoyuncloud/wiki/%E4%BB%8E%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0web%E4%B8%8A%E4%BC%A0%E8%90%BD%E4%BA%91%E5%BA%94%E7%94%A8%E7%9A%84%E6%AD%A5%E9%AA%A4">管理后台web上传落云应用的步骤</ulink></para>
+  </section>
+  <!-- 结束上传应用--> 
+  
+  <!-- 开始用户权限配置-->
+  <section>
+    <title>用户权限配置</title>
+    <para>管理员可在"管理后台"->"帐户管理"->"用户组"中,对用户组调整权限，如下图</para>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/usergroup.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>也可以对单个用户调整权限以及他在平台上的可分配资源，如图</para>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/useage.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>完成初始安装的 LuoYunCloud 并不向普通用户开放使用权，如果您需要向新注册用户开放使用，请执行以下命令</para>
+    <programlisting>
+mv /opt/LuoYun/web/luoyun.cfg.example /opt/LuoYun/web/luoyun.cfg
+    </programlisting>
+  </section>
+  <!-- 结束用户权限配置-->  
+
+  <!-- 开始地址池配置-->
+  <section>
+    <title>地址池配置</title>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/ippool.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>在多节点环境下使用时，请管理员在“管理后台”的“系统”标签下，选择”ip地址池“，根据当前网络环境配置一个或多个供虚拟机使用IP地址池。</para>
+  </section>
+  <!-- 结束地址池配置-->  
+
+  <!-- 开始启用二级域名-->
+  <section>
+    <title>启用二级域名</title>
+    <note><para>启用二级域名前请先做好地址池配置</para></note>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/domain.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>LuoYunCloud 支持用户使用自有的二级域名，使用前请管理员在“管理后台”的系统标签下，选择“域名”，在 Top domain 框中填写根域名，如 luoyuncloud.com</para>
+    <para>在 Name prefix 框中填写默认域名的首字母,如 i，在 Name suffix 框中填写默认域名的尾字符，如 x。用户创建虚拟机后就会自动获得一个形如 i1x.luoyuncloud.com的二级域名。</para>
+  </section>
+  <!-- 结束启用二级域名-->  
+
+  <!-- 开始对应用库进行分类整理-->
+  <section>
+    <title>对应用库进行分类整理</title>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/appdir.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>应用库中的应用较多时，可以使用应用目录进行分类整理。</para>
+  </section>
+  <!-- 结束对应用库进行分类整理-->  
+
+  <!-- 开始查询LuoYunCloud平台的整体计算资源状态-->
+  <section>
+    <title>查询 LuoYunCloud 平台的整体计算资源状态</title>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/all.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>点击“管理后台”，即可查看当前 LuoYunCloud 平台上所有的应用数量，已经创建的虚拟机数量，饼图则显示当前运行的虚拟机所占用的计算机核心资源与内存资源。</para>
+    <para>在下方还有2个列表，分别显示最新注册的10个用户与最后执行的10个平台任务。</para>
+  </section>
+  <!-- 结束查询LuoYunCloud平台的整体计算资源状态-->  
+
+  <!-- 开始查询LuoYunCloud平台的任务记录-->
+  <section>
+    <title>查询 LuoYunCloud 平台的任务记录</title>
+     <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/task.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>在“管理后台”的“系统”标签下，管理员还可以通过“任务历史”和“系统记录”两项查看整个 LuoYunCloud 平台上的操作记录。</para>
+  </section>
+  <!-- 结束查询LuoYunCloud平台的任务记录-->  
+
+  <!-- 开始管理员用户和普通用户一样也可以创建自己的虚拟机-->
+  <section>
+    <title>管理员用户和普通用户一样也可以创建自己的虚拟机</title>
+     <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/adminuse.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>管理员用户也可以创建虚拟机，默认分配的资源配额与普通用户一样，如果需要修改，同样在管理后台的用户标签下进行编辑。</para>
+  </section>
+  <!-- 结束管理员用户和普通用户一样也可以创建自己的虚拟机-->  
+
+
+  <!-- 开始启用更多的lynode节点服务器-->
+  <section>
+    <title>启用更多的 lynode 节点服务器</title>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/node.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <para>管理员用户进入“管理后台” 的“节点”标签，可以确认并“启用”新加入的 lynode 服务器。</para>
+    <para>在节点标签下,点击节点名称后,管理员可以编辑节点在 LuoYunCloud 平台上可使用的资源总量,以便灵活调节各节点的负载.</para>
+  </section>
+  <!-- 结束启用更多的lynode节点服务器-->  
+
+
+
+  
+
+
   <!-- 开始域名配置-->
   <section>
     <title>域名配置</title>
