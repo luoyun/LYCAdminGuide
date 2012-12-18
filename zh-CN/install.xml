@@ -7,8 +7,146 @@
   <title>安装 LuoYunCloud</title>
 
   <section>
-    <title>使用 LiveCD 安装</title>
-    <para>未完待续...</para>
+    <title>使用 LiveCD 安装</title> 
+      <procedure>
+	<step>
+	  <title>安装 LiveCD</title>
+	  <orderedlist>
+	    <listitem>
+	      <para>从 LiveCD 启动计算机,自动登陆系统</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-1.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	    <listitem>
+	      <para>点击【硬盘安装】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-2.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	    <listitem>
+	      <para>点击【下一步】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-3.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	    <listitem>
+	      <para>选择默认“美国英语式”，点击【下一步】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-4.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	    <listitem>
+	      <para>选择默认“基本存储设备”，点击【下一步】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-5.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	    <listitem>
+	      <para>选择“是，忽略所有数据”，点击【下一步】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-6.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	    
+	    <listitem>
+	      <para>自定义主机名称或默认，点击【下一步】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-7.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	     <listitem>
+	      <para>选择默认“亚洲/上海”，点击【下一步】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-8.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	    <listitem>
+	      <para>自定义输入”根密码“并”确认“填写”，点击【下一步】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-9.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	    <listitem>
+	      <para>出现弹出框，点击【无论如何都使用】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-10.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	    <listitem>
+	      <para>选择“使用所有空间”，点击【下一步】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-11.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	     <listitem>
+	      <para>出现弹出框，点击【将修改写入磁盘】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-12.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	    <listitem>
+	      <para>等待安装</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-13.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	       <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-14.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+	     <listitem>
+	      <para>出现下图界面，表示您的 LiveCD 安装完成，点击【关闭】</para>
+	      <mediaobject>
+		<imageobject>
+		  <imagedata fileref="images/install/install-livecd-15.png" format="PNG"  align="center"/>
+		</imageobject>
+	      </mediaobject>
+	    </listitem>
+
+	  </orderedlist>
+
+
+	  </step>
+	<step>
+	  <title>安装 LuoYunCloud</title>
+	  <para>内容</para>
+	</step>
+	<step>
+	  <title>管理</title>
+	  <para>内容.</para>
+	</step>
+      </procedure>
+
+
+   
   </section>
 
 
