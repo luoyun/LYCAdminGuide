@@ -174,7 +174,7 @@ mv luoyuncloud.repo /etc/yum.repos.d/luoyuncloud.repo
     <step>
       <title>部署 LuoYunCloud 的主控服务器软件</title>
       <programlisting>
-yum install luoyuncloud-web luoyuncloud-clc
+yum install luoyuncloud-web luoyuncloud-clc luoyuncloud-nginx
       </programlisting>
       <para>执行此条指令可以在您的机器上部署 lyweb 和 lyclc 这两项 LuoYunCloud 服务。</para>
       <para>执行完成后，这两项服务已经默认部署在 /opt/LuoYun 中，接下来您需要执行一次 lyweb 的安装。</para>
@@ -183,12 +183,12 @@ yum install luoyuncloud-web luoyuncloud-clc
       <title>安装 lyweb 服务及 postgresql 数据库</title>
       <para>执行：</para>
       <programlisting>
-/opt/LuoYun/bin/install-web.sh
+/opt/LuoYun/install/install-web.sh
       </programlisting>
       <para>此指令将帮助您快速的完成 lyweb 服务及数据库的初始化安装。在执行过程中您需要输入数据库名称，建议使用 luoyun，输入2次后，将请求给以 luoyun 数据库高级权限，请输入 y 确认。</para>
       <para>得到如下反馈后,表示您的机器中已经安装 lyweb 及其所需要的数据库：</para>
       <programlisting>
-[root@localhost ~]# /opt/LuoYun/bin/install-web.sh
+[root@localhost ~]# /opt/LuoYun/install/install-web.sh
 Initializing database:                                     [  OK  ]   # 注意，此处可能需要时间较长，请耐心等待即可。
 Starting postgresql service:                               [  OK  ]
 Create DB User
@@ -216,20 +216,42 @@ DEBUG:Manage:build /opt/LuoYun/web/locale/en_US/LC_MESSAGES/app.mo success
       </programlisting>
       <para>然后重新执行</para>
       <programlisting>
-/opt/LuoYun/bin/install-web.sh
+/opt/LuoYun/install/install-web.sh
       </programlisting>
       </important>
     </step>
     <step>
       <title>启动 lyweb 服务</title>
+      <para>确定 postgresql 数据库已经启动。如未启动，用如下命令启动数据库</para>
+      <programlisting>
+service postgresql start
+      </programlisting>
+      <para>然后启动 lyweb</para>
       <programlisting>
 service lyweb start
       </programlisting>
+      <para>系统将显示</para>
+      <programlisting>
+Starting lyweb:   OK
+      </programlisting>
+      <para>表示 lyweb 服务已经成功启动。用户可通过浏览器访问当然机器上的 LuoYunCloud 了。</para>
     </step>
     <step>
       <title>启动 lyclc 服务</title>
       <programlisting>
 service lyclc start
+      </programlisting>
+      <para>系统将显示</para>
+      <programlisting>
+Starting lyclc:   OK
+      </programlisting>
+      <para>表示机器上的 lyclc 服务启动成功，开始等待 lynode 服务器加入后开始提供创建虚拟机等服务。</para>
+      <para>然后请执行下面的指令，打开 iptabe 的端口：</para>
+      <programlisting>
+iptables -I INPUT 1 -p tcp -m tcp --dport 1369 -j ACCEPT
+iptables -I INPUT 1 -p tcp -m tcp --dport 80 -j ACCEPT
+iptables -I INPUT 1 -p tcp -m tcp --dport 8080 -j ACCEPT
+iptables -I INPUT 1 -p tcp -m tcp --dport 8001 -j ACCEPT
       </programlisting>
     </step>
     <step>
@@ -237,12 +259,54 @@ service lyclc start
       <programlisting>
 yum install luoyuncloud-node
       </programlisting>
+      <para>执行完成即可。</para>
     </step>
     <step>
       <title>启动 lynode 节点服务</title>
       <programlisting>
 service lynode start
       </programlisting>
+      <para>系统将显示</para>
+      <programlisting>
+Starting lynode:   OK
+      </programlisting>
+      <para>表示机器上的 lynode 服务启动成功。</para>
+      <para>至此，当前机器已经可以提供完整的 LuoYunCloud 云计算服务了。</para>
+    </step>
+
+    <step>
+      <title>最后，将 LuoYunCloud 的各项服务配置成开机自启动</title>
+      <para>首先，确定 iptables （防火墙）打开了如下端口。确定文件 /etc/sysconfig/iptables 包含以下内容。</para>
+      <programlisting>
+-A INPUT -p tcp -m tcp --dport 1369 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 8001 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 8080 -j ACCEPT
+      </programlisting>
+      <para>由于 iptables 规则顺序的执行方法，以上内容要在 </para>
+      <programlisting>
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+      </programlisting>
+      <para>这条规则之上。</para>
+      <para>然后, 请执行下列命令将各项所需要的服务加入系统的自动启动列表。</para>
+      <programlisting>
+chkconfig postgresql on
+chkconfig lyweb on
+chkconfig lyclc on
+chkconfig lynode on
+      </programlisting>
+      <para>加入成功后可以使用 chkconfig --list 查看服务自启动状态</para>
+      <programlisting>
+# chkconfig --list lyweb
+lyweb           0:关闭  1:关闭  2:启用  3:启用  4:启用  5:启用  6:关闭
+# chkconfig --list lyclc
+lyclc           0:关闭  1:关闭  2:启用  3:启用  4:启用  5:启用  6:关闭
+# chkconfig --list lynode
+lynode          0:关闭  1:关闭  2:启用  3:启用  4:启用  5:启用  6:关闭
+# chkconfig --list postgresql
+postgresql      0:关闭  1:关闭  2:启用  3:启用  4:启用  5:启用  6:关闭
+      </programlisting>
+      <para>至此，LuoYunCloud 可以在系统启动后，自动启动。</para>
     </step>
     
 
