@@ -6,6 +6,8 @@
 <chapter id="chap-run_stop">
   <title>运行 / 停止 LuoYunCloud</title>
 
+  <para>运行／停止 LuoYunCloud 系统，需要管理员对整个系统有一定的了解。以免错误的操作影响系统的正常运行。</para>
+
   <section>
     <title>运行 LuoYunCloud</title>
     <para>单机情况下 LuoYunCloud 的运行步骤如下，如果 lyweb, lyclc, lynode 部署在不同机器上，请在相应机器上执行对应的启动命令即可：</para>
