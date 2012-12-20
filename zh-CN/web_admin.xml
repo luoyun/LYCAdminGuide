@@ -40,18 +40,30 @@
 	<imagedata fileref="images/web_admin/usergroup.jpg" format="JPG"  align="center"/>
       </imageobject>
     </mediaobject>
-    <para>也可以对单个用户调整权限以及他在平台上的可分配资源，如图</para>
-    <mediaobject>
-      <imageobject>
-	<imagedata fileref="images/web_admin/useage.jpg" format="JPG"  align="center"/>
-      </imageobject>
-    </mediaobject>
+   
     <para>完成初始安装的 LuoYunCloud 并不向普通用户开放使用权，如果您需要向新注册用户开放使用，请执行以下命令</para>
     <programlisting>
 mv /opt/LuoYun/web/luoyun.cfg.example /opt/LuoYun/web/luoyun.cfg
     </programlisting>
   </section>
   <!-- 结束用户权限配置-->  
+  <!-- 开始用户资源配置-->
+  <section>
+    <title>用户资源配置</title>
+    <para>单个用户调整权限以及他在平台上的可分配资源，如图</para>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/useage.jpg" format="JPG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    <mediaobject>
+      <imageobject>
+	<imagedata fileref="images/web_admin/edit_user_resource.png" format="PNG"  align="center"/>
+      </imageobject>
+    </mediaobject>
+    </section>
+  <!-- 结束用户资源配置-->
+  
 
   <!-- 开始地址池配置-->
   <section>
