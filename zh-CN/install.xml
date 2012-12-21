@@ -419,8 +419,9 @@ DEVICE="br0"
 ONBOOT=yes
 TYPE=Bridge
 BOOTPROTO=none
-IPADDR=10.0.0.1
-NETMASK=255.0.0.0
+IPADDR=192.168.1.2
+GATEWAY=192.168.1.1
+NETMASK=255.255.255.0
 DELAY=0
       </programlisting>
       <para>重启 network 服务即可</para>
@@ -468,7 +469,14 @@ service lynode restart
       <title>部署完成后的注意事项</title>
       <itemizedlist>
 	<listitem>
-	  <para>做单机部署的节点机器，在做为多点部署后，需要将原先创建的虚拟机重启才能正常使用</para>
+	  <para>在原单机部署时使用的虚拟机器，在平台转为多点部署后，需要修改/opt/LuoYun/platform/etc/luoyun-cloud/lynode.sysconf，只需修改LYCLC_HOST</para>
+          <programlisting>
+LYCLC_HOST = 192.168.122.1  #此处请改为新设置的IP地址
+LYCLC_PORT = 1369 #此处不要修改
+LYNODE_TAG = 3 #此处为节点在数据库中的编号，不要修改
+LYNODE_SECRET = a91f69e3-950b-4977-9ea1-bc0f50154a0e #此处为节点注册密码，不要修改
+	  </programlisting>
+	  <para>然后，将原先创建的虚拟机重启，即可在多节点环境的LuoYunCloud平台上正常使用。</para>
 	</listitem>
 	<listitem>
 	  <para>确定多点部署成功完成后，可以将节点服务器的操作系统设置为不启动图形界面，这样可以节省一部分计算资源供云平台使用</para>
