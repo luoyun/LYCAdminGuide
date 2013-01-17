@@ -56,6 +56,7 @@ mv /opt/LuoYun/web/luoyun.cfg.example /opt/LuoYun/web/luoyun.cfg
 	<imagedata fileref="images/web_admin/useage.jpg" format="JPG"  align="center"/>
       </imageobject>
     </mediaobject>
+   
     <mediaobject>
       <imageobject>
 	<imagedata fileref="images/web_admin/edit_user_resource.png" format="PNG"  align="center"/>

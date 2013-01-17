@@ -15,6 +15,11 @@
 <!-- 开始使用 LiveCD 安装-->
   <section>
     <title>使用 LiveCD 安装</title> 
+    <note><para>安装 Live CD 之前请先检查计算机是否支持虚拟化。您可以用 root 用户运行 LiveCD 里的如下命令进行检查：
+    <programlisting>
+# /opt/LuoYun/bin/check
+    </programlisting>
+    </para></note>
     <procedure>
       <step>
 	<title>安装 LiveCD</title>
@@ -142,6 +147,7 @@
       </step>
       <step>
 	<title>配置 LuoYunCloud</title>
+	<note><para>【配置 LunYunCloud】以及下面的【启动与停止 LuoYun 服务】，都需要 root 权限 </para></note>
 	<orderedlist>
 	  <listitem>
 	    <para>初始化 LuoYunCloud</para>
@@ -155,6 +161,7 @@
       </step>
       <step>
 	<title>启动与停止 LuoYun 服务</title>
+	
 	<para>启动 LuoYun</para>
 	<programlisting>
 # /opt/LuoYun/bin/start
